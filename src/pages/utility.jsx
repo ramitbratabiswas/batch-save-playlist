@@ -2,12 +2,16 @@ import { useFetchMyPlaylists } from "../utils/fetchMyPlaylists";
 
 export default function Utility() {
 
-  const playlists = useFetchMyPlaylists();
+  const data = useFetchMyPlaylists();
 
   return (
     <div className="utility-container">
       <ul>
-      {playlists.map((item, index) => <li key={index}>{index+1}. {item.name} - {item.owner}</li>)} 
+      {data.playlists.map((item, index) => <li key={index+1}>{index+1}. {item.name} - {item.owner}</li>)} 
+      </ul>
+      <br/>
+      <ul>
+      {data.owners.map((item, index) => <li key={index+1}>{index+1}. {item}</li>)}
       </ul>
     </div>
   );

@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 export const useFetchMyPlaylists = () => {
 
   const [userPlaylists, setUserPlaylists] = useState([]);
+  const [owners, setOwners] = useState([]);
   const accessToken = localStorage.getItem("access_token");
 
   useEffect(() => {
-    
+
     const fetchMyPlaylists = async () => {
 
       if (!accessToken) return null;
@@ -15,6 +16,7 @@ export const useFetchMyPlaylists = () => {
       let playlists = [];
       let current = [];
       let jsonified = null;
+      let ownersSet = new Set();
 
       do {
         const res = await fetch(`https://api.spotify.com/v1/me/playlists?offset=${offset}`, {
@@ -28,6 +30,7 @@ export const useFetchMyPlaylists = () => {
 
         jsonified = await res.json();
         current = jsonified.items.map((item) => {
+          ownersSet.add(item.owner.display_name);
           return {
             name: item.name,
             id: item.id,
@@ -37,11 +40,11 @@ export const useFetchMyPlaylists = () => {
         playlists = [...playlists, ...current];
       } while (jsonified.items.length === 50)
 
-      setUserPlaylists(() => [...playlists]);
-
+      setUserPlaylists(() => playlists);
+      setOwners(() => [...ownersSet]);
     }
     fetchMyPlaylists();
   }, [accessToken]);
 
-  return userPlaylists;
+  return { playlists: userPlaylists, owners: owners };
 }
