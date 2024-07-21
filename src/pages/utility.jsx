@@ -1,17 +1,18 @@
 import { useFetchMyPlaylists } from "../utils/fetchMyPlaylists";
+import { useSaveMusic } from "../utils/saveMusic";
 
 export default function Utility() {
 
-  const data = useFetchMyPlaylists();
+  const { playlists, owners } = useFetchMyPlaylists();
 
   return (
     <div className="utility-container">
       <ul>
-      {data.playlists.map((item, index) => <li key={index+1}>{index+1}. {item.name} - {item.owner}</li>)} 
+      {playlists.map((item, index) => <li key={index+1}>{index+1}. {item.name} - {item.owner}</li>)} 
       </ul>
       <br/>
       <ul>
-      {data.owners.map((item, index) => <li key={index+1}>{index+1}. {item}</li>)}
+      {owners.map((item, index) => <li key={index+1}>{index+1}. {item}</li>)}
       </ul>
     </div>
   );
