@@ -7,7 +7,7 @@ export default function Utility() {
   return (
     <div className="utility-container">
       <ul>
-      {playlists.map((item, index) => <li key={index}>{index+1}. {item.name}</li>)} 
+      {playlists.map((item, index) => <li key={index}>{index+1}. {item.name} - {item.owner}</li>)} 
       </ul>
     </div>
   );

@@ -6,35 +6,42 @@ export const useFetchMyPlaylists = () => {
   const accessToken = localStorage.getItem("access_token");
 
   useEffect(() => {
+    
     const fetchMyPlaylists = async () => {
-      
+
       if (!accessToken) return null;
 
-      try {
-        const res = await fetch(`https://api.spotify.com/v1/me/playlists`, {
+      let offset = 0;
+      let playlists = [];
+      let current = [];
+      let jsonified = null;
+
+      do {
+        const res = await fetch(`https://api.spotify.com/v1/me/playlists?offset=${offset}`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${accessToken}`
           }
         });
 
-        const jsonified = await res.json();
-        const playlists = jsonified.items.map((item) => {
+        offset += 50;
+
+        jsonified = await res.json();
+        current = jsonified.items.map((item) => {
           return {
             name: item.name,
             id: item.id,
-            imgUrl: item.images[0].url, 
-            description: item.description
+            owner: item.owner.display_name
           }
-        });
-        setUserPlaylists(() => playlists);
+        })
+        playlists = [...playlists, ...current];
+      } while (jsonified.items.length === 50)
 
-      } catch (error) {
-        console.error(`catch clause error in fetchMyPlaylists: ${error}`);
-      }
+      setUserPlaylists(() => [...playlists]);
+
     }
     fetchMyPlaylists();
-  },[accessToken]);
+  }, [accessToken]);
 
   return userPlaylists;
 }
