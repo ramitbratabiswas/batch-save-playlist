@@ -1,8 +1,5 @@
-# React + Vite
+# bulk save music to your liked songs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I was tired of forgetting to add music to my liked songs ever since Spotify removed the heart button next to every song, so I decided to make a tool that lets you save all songs in a playlist all at once.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
