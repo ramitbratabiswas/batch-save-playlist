@@ -7,26 +7,84 @@
   margin: 0;
   padding: 0;
   z-index: 2;
-  color: aliceblue;
+  color: rgb(253, 245, 255);
 }
 
-html {
+html, body {
   background-color: #181d1e;
   margin: 0;
-  padding: 10%;
+  padding: 0;
   height: 100%;
+  overflow-x: hidden;
 }
 
-ul {
+.frontpage-container {
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.frontpage-content {
+  flex-grow: 1;
+}
+
+.frontpage-login {
+  text-decoration: none;
+  font-size: 60px;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+
+.frontpage-login:hover {
+  text-decoration: underline;
+}
+
+.frontpage-footer {
+  align-self: flex-end;
+  font-size: small;
+  text-align: right;
+}
+
+.utility-container {
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.utility-header, .owners-header {
+  margin-bottom: 10px;
+}
+
+.playlists {
   list-style: none;
-  columns: 3;
+  columns: auto;
+  column-width: 350px;
 }
 
-h1 {
+.owners {
+  list-style: none;
+  columns: auto;
+  column-width: 180px;
+}
+
+li {
   margin-bottom: 10px;
 }
 
 span:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.owner-name {
+  font-size: small;
+}
+
+@media (max-width: 768px) {
+  .utility-container {
+    padding: 10px;
+  }
 }
