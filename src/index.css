@@ -42,7 +42,7 @@ html, body {
 
 .frontpage-footer {
   align-self: flex-end;
-  font-size: small;
+  font-size: xx-small;
   text-align: right;
 }
 
@@ -80,7 +80,7 @@ span:hover {
 }
 
 .owner-name {
-  font-size: xx-small;
+  font-size: small;
 }
 
 @media (max-width: 768px) {
