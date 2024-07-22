@@ -2,6 +2,7 @@
 
 * {
   font-family: 'IBM Plex Mono', 'Georgia', 'Times', serif;
+  font-weight: 300;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -12,6 +13,20 @@
 html {
   background-color: #181d1e;
   margin: 0;
-  padding: 0;
+  padding: 10%;
   height: 100%;
+}
+
+ul {
+  list-style: none;
+  columns: 3;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+span:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
