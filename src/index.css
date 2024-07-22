@@ -80,7 +80,7 @@ span:hover {
 }
 
 .owner-name {
-  font-size: small;
+  font-size: xx-small;
 }
 
 @media (max-width: 768px) {
